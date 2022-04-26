@@ -1,6 +1,9 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const PORT = 32;
+
+app.use(cors());
 
 const database = {
     "name": "Nathifa",
@@ -13,5 +16,5 @@ app.listen(
 );
 
 app.get('/data', (req, res) => 
-    res.status(200).send(database));
+    res.status(200).json(database));
     
