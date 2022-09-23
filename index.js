@@ -36,14 +36,12 @@ const userSchema = mongoose.Schema({
 //model
 const UserModel = mongoose.model('UserModel', userSchema, "names");
 
-//console.log(userSchema);
 
 app.listen(
     PORT,
     console.log(`http://localhost:${PORT}`)
 );
 
-// const reslt = monModel.find();
 
 app.get('/data', async (req, res) => {
     UserModel
