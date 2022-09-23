@@ -47,23 +47,13 @@ app.listen(
 
 app.get('/data', async (req, res) => {
     UserModel
-        .find()
-        .then((data) => res.status(200).send(data))
+        .find({"name":{$ne:null}, "lastName":{$ne:null}})
+        .then((data) => {
+        
+        res.status(200).send(data)})
         .catch((err) => console.log(err))
 
-    // try {
-    //     const data = await UserModel.find({});
-    //     console.log(data);
-    //     res.status(200).json(data);
-    // } catch (err) {
-    //     console.error(err);
-    //     res.status(400).send("It went boom on this end sorry")
-    // } finally {
-    //     console.log("go poof regardless!");
-    // }
-    
 });
-    // console.log(reslt);
 
 
 const message = {
@@ -83,7 +73,7 @@ app.post('/user', (req, res) => {
     console.log("User Add request received for " + req.body.lastName);
     
 
-    const data = new monModel({
+    const data = new UserModel({
         name:req.body.name,
         lastName:req.body.lastName
     });
